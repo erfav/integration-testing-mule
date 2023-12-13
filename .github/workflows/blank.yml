@@ -1,0 +1,39 @@
+name: Integration Testing Automation
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  testing:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Integration Testing ( Install BAT CLI)
+        run: curl -o- 'https://s3.amazonaws.com/bat-wrapper/install.sh'
+        
+        # example of bat command bat ./src/test/resources/integration/bat.dwl
+      - name: Running Integration Tests (defaults to bat.yaml file)
+        run: bat
+
+# tool for performance testing
+# This step is deactivated (if false)
+      - name: Performance Testing
+        if: ${{ false }}
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: ./src/test/resources/performance/test.js  
