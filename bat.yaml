@@ -1,0 +1,24 @@
+suite:
+  name: "Check In Suite"
+files:
+  - file: checkin-test-suite.dwl
+reporters:
+    - type: HTML
+      outFile: ./results/HTML.html
+    - type: JSON
+      outFile: ./results/JSON.json
+  # - type: SumoLogic
+  #   options:
+  #     SUMO_ENDPOINT: <sumo_source>
+  # - type: PagerDuty
+  #   options:
+  #     PAGER_DUTY_ROUTING_KEY: <routing_key>
+  # - type: Slack
+  #   options:
+  #     SLACK_WEBHOOK: <webhook_url>
+  # - type: Email
+  #   options:
+  #     EMAILS: <email_list>
+  # - type: NewRelic
+  #   options:
+  #     NEW_RELIC_LICENSE_KEY: <license_key>
