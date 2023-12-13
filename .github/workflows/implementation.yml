@@ -30,6 +30,10 @@ jobs:
       - name: Running Integration Tests (defaults to bat.yaml file)
         run: bat
 
+        # example of bat command bat ./src/test/resources/integration/bat.dwl
+      - name: Print Report
+        run: cat /home/runner/work/integration-testing-mule/integration-testing-mule/JSON.json
+
 # tool for performance testing
 # This step is deactivated (if false)
       - name: Performance Testing
