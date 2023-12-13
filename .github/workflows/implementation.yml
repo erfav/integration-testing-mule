@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Integration Testing ( Install BAT CLI)
-        run: curl -o- 'https://s3.amazonaws.com/bat-wrapper/install.sh'
+        run: curl -o- 'https://s3.amazonaws.com/bat-wrapper/install.sh' | bash && echo Integration Testing Complete
         
         # example of bat command bat ./src/test/resources/integration/bat.dwl
       - name: Running Integration Tests (defaults to bat.yaml file)
